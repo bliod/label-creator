@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/app.css" />
+    <!-- <script src="/app.js"></script> -->
+    <title>Label Creator</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <div>
+          <h1>Options</h1>
+          <label for="Canvas width">Select label width</label><br />
+          <input
+            id="canvas-width"
+            type="number"
+            name="Canvas width"
+            value="500"
+          /><br />
+          <label for="Canvas height">Select label height</label><br />
+          <input
+            id="canvas-height"
+            type="number"
+            name="Canvas height"
+            value="800"
+          />
+        </div>
+      </div>
+      <div>
+        <canvas id="canvas" height="800" width="500"> </canvas>
+      </div>
+    </main>
+    <script>
+      const canvasElement = document.getElementById("canvas");
+      const inputElements = document.querySelectorAll("input");
+      inputElements.forEach((el) => {
+        el.addEventListener("change", (event) => {
+          let target = event.target;
+          console.log(target);
+
+          if (target.name === "Canvas width") {
+            canvasElement.setAttribute("width", target.value);
+          }
+
+          if (target.name === "Canvas height") {
+            canvasElement.setAttribute("height", target.value);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
