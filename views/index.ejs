@@ -3,7 +3,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/app.css" />
-    <!-- <script src="/app.js"></script> -->
     <title>Label Creator</title>
   </head>
   <body>
@@ -15,10 +14,7 @@
         <textarea id="json" name="json"><%=example%></textarea>
         <input type="submit" onclick="handleSubmit()" value="CREATE" />
       </div>
-      <div>
-        <!-- <canvas id="canvas" height="800" width="500"> </canvas> -->
-        <%-htmlFile%>
-      </div>
+      <div><%-htmlFile%></div>
     </main>
     <script>
       const inputElement = document.querySelector("textarea");
