@@ -37,7 +37,7 @@
                 "y": "230"
             },
             "text": "Jon Doe",
-            "font": "normal 20px Sans-serif",
+            "font": "normal 22px serif",
             "color": "black"
         },
         {
@@ -46,7 +46,7 @@
                 "x": "30",
                 "y": "250"
             },
-            "text": "Olimpiečių g. 5-1",
+            "text": "NodeJS g. 15",
             "font": "normal 20px Sans-serif",
             "color": "black"
         },
@@ -57,7 +57,7 @@
                 "y": "270"
             },
             "text": "Vilnius",
-            "font": "normal 20px Sans-serif",
+            "font": "bold 20px Sans-serif",
             "color": "black"
         },
         {
@@ -66,8 +66,8 @@
                 "x": "30",
                 "y": "290"
             },
-            "text": "LT-09237",
-            "font": "normal 20px Sans-serif",
+            "text": "LT-00000",
+            "font": "italic 20px Sans-serif",
             "color": "black"
         },
         {
@@ -78,7 +78,7 @@
             },
             "text": "Lithuania",
             "font": "normal 20px Sans-serif",
-            "color": "black"
+            "color": "green"
         },
         {
             "width": "300",
@@ -138,6 +138,15 @@
             "height": "100",
             "position": {
                 "x": "50",
+                "y": "60"
+            }
+        },
+        {
+            "url": "http://localhost:3000/shirtfunny.jpeg",
+            "width": "150",
+            "height": "100",
+            "position": {
+                "x": "300",
                 "y": "60"
             }
         }

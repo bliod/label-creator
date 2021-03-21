@@ -10,10 +10,10 @@
     <main>
       <div>
         <h1>Options</h1>
-
-        <label for="json">JSON input</label>
+        <label for="json">JSON input:</label>
         <br />
         <textarea id="json" name="json"><%=example%></textarea>
+        <input type="submit" onclick="handleSubmit()" value="CREATE" />
       </div>
       <div>
         <!-- <canvas id="canvas" height="800" width="500"> </canvas> -->
@@ -22,20 +22,24 @@
     </main>
     <script>
       const inputElement = document.querySelector("textarea");
-      inputElement.addEventListener("change", async (event) => {
-        let target = event.target;
-        let obj = JSON.parse(target.value);
 
-        const response = await fetch("http://localhost:3000/create", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify(obj),
-        });
-        console.log(JSON.parse(target.value));
-      });
+      const handleSubmit = async () => {
+        try {
+          let value = inputElement.value;
+          let obj = JSON.parse(value);
+          await fetch("http://localhost:3000/create", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(obj),
+          });
+          location.reload();
+        } catch (error) {
+          console.log(error);
+        }
+      };
     </script>
   </body>
 </html>

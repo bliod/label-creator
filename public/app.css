@@ -24,3 +24,8 @@ textarea {
   width: 500px;
   height: 800px;
 }
+input[type*="submit"] {
+  position: absolute;
+  margin-left: 1rem;
+  padding: 0.5rem;
+}
