@@ -43,7 +43,6 @@ app.post("/create", (req, res, next) => {
         element.width,
         element.height
       );
-      // context.stroke();
     });
   }
   const stream = canvas.createPNGStream();

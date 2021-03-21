@@ -9,12 +9,11 @@
   <body>
     <main>
       <div>
-        <div>
-          <h1>Options</h1>
+        <h1>Options</h1>
 
-          <label for="json">JSON input</label>
-          <br />
-          <textarea id="json" name="json" rows="30" cols="30">
+        <label for="json">JSON input</label>
+        <br />
+        <textarea id="json" name="json">
             {
               "canvas": {
                   "height": "310",
@@ -65,8 +64,7 @@
                   }
               ]
           }</textarea
-          >
-        </div>
+        >
       </div>
       <div>
         <!-- <canvas id="canvas" height="800" width="500"> </canvas> -->
@@ -78,7 +76,6 @@
       inputElement.addEventListener("change", async (event) => {
         let target = event.target;
         let obj = JSON.parse(target.value);
-        console.log(JSON.parse(target.value));
 
         const response = await fetch("http://localhost:3000/create", {
           headers: {
@@ -88,6 +85,7 @@
           method: "POST",
           body: JSON.stringify(obj),
         });
+        console.log(JSON.parse(target.value));
       });
     </script>
   </body>
