@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
-const out = fs.createWriteStream(__dirname + "/test.png");
 const { createCanvas, loadImage } = require("canvas");
 const PORT = 3000;
 
@@ -20,20 +19,32 @@ app.get("/", (req, res, next) => {
 });
 
 app.post("/create", (req, res, next) => {
+  const out = fs.createWriteStream(path.join(__dirname, "/public/label.png"));
   const data = req.body;
   console.log(data);
 
-  const width = 500;
-  const height = 500;
+  let width = 500;
+  let height = Number(data.canvas.height);
+  // if (data.canvas.height) {
+  //   height = data.canvas.height;
+  // }
 
   const canvas = createCanvas(width, height);
   const context = canvas.getContext("2d");
 
-  context.fillStyle = "#000";
+  context.fillStyle = "#0f0";
+  console.log(width, height);
   context.fillRect(0, 0, width, height);
   const stream = canvas.createPNGStream();
+
   stream.pipe(out);
+  // req.on("end", function () {
+  //   // res.writeHead(200, { "content-type": "text/html" });
+  //   res.end("<h5>Label created</h5>");
+  // });
+
   out.on("finish", () => console.log("The PNG file was created."));
+  out.on("error", (err) => console.log(err));
 });
 
 app.listen(PORT, function () {
