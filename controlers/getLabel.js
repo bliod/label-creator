@@ -3,7 +3,8 @@ const fs = require("fs");
 
 const getLabel = (req, res, next) => {
   let htmlFile = fs.readFileSync(path.join(__dirname, "../label.html"));
-  res.render("index.ejs", { htmlFile });
+  let example = fs.readFileSync(path.join(__dirname, "../example.json"));
+  res.render("index.ejs", { htmlFile, example });
 };
 
 module.exports = getLabel;
