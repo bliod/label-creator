@@ -21,28 +21,33 @@ app.get("/", (req, res, next) => {
 app.post("/create", (req, res, next) => {
   const out = fs.createWriteStream(path.join(__dirname, "/public/label.png"));
   const data = req.body;
-  console.log(data);
+  console.log(data.canvas);
 
-  let width = 500;
-  let height = Number(data.canvas.height);
-  // if (data.canvas.height) {
-  //   height = data.canvas.height;
-  // }
+  let width = 300;
+  let height = 300;
+  data.canvas.height ? (height = Number(data.canvas.height)) : "";
+  data.canvas.width ? (width = Number(data.canvas.width)) : "";
 
   const canvas = createCanvas(width, height);
   const context = canvas.getContext("2d");
 
-  context.fillStyle = "#0f0";
-  console.log(width, height);
-  context.fillRect(0, 0, width, height);
+  context.fillStyle = "#fff";
+
+  if (data.rectangleElement) {
+    data.rectangleElement.forEach((element) => {
+      context.lineWidth = element.stroke.size;
+      context.strokeStyle = element.stroke.color;
+      context.strokeRect(
+        element.position.x,
+        element.position.y,
+        element.width,
+        element.height
+      );
+      // context.stroke();
+    });
+  }
   const stream = canvas.createPNGStream();
-
   stream.pipe(out);
-  // req.on("end", function () {
-  //   // res.writeHead(200, { "content-type": "text/html" });
-  //   res.end("<h5>Label created</h5>");
-  // });
-
   out.on("finish", () => console.log("The PNG file was created."));
   out.on("error", (err) => console.log(err));
 });
