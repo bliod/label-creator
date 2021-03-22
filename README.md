@@ -32,6 +32,8 @@ After creating, browser restarts with initial data, and shows created output.
 
 ## Install
 
+Make sure you node version is v14 and higher, because node.js is using optional chaning.
+
 npm install or yarn
 
 ## Development
